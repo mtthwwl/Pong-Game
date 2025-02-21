@@ -7,3 +7,49 @@ body{
     margin: 0;
     overflow: hidden;
 }
+
+#game-container{
+    width: 800px;
+    height: 600px;
+    background-color: white;
+    position: relative;
+    border: 5px solid black;
+
+}
+
+#ball{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: red;
+    position: absolute;
+
+}
+
+.paddle{
+    position: absolute;
+    background-color: #b63636;
+    width: 10px;
+    height: 100px;
+}
+
+#player-paddle{
+    left:  10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#computer-paddle{
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#score{
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: blueviolet;
+    font-size: 24px;
+}
