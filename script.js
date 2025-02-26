@@ -48,6 +48,8 @@ function updateBallPosition(){
         resetBall();
     }
 
+    scoreDisplay.innerText = playerScore + " - " + computerScore;
+    
     //player movement
     ball.style.left = ballX + "px";
     ball.style.top = ballY + "px";
@@ -62,13 +64,29 @@ function resetBall(){
 }
 
 function updatePaddlePosition(){
+
+    // player paddle
     document.addEventListener("mousemove", (event) =>{
         playerY = event.clientY - gameContainer.offsetTop - PADDLE_HEIGHT / 2;
 
         playerY = Math.max(0, Math.min(GAME_HEIGHT - PADDLE_HEIGHT, playerY)); 
         playerPaddle.style.top = playerY + "px";
 
-    });    
+    }); 
+    
+    // computer paddle
+    const computerPaddleCenter = computerY + PADDLE_HEIGHT / 2;
+    if (ballY > computerPaddleCenter){
+        computerY += 5;
+    } else if(ballY < computerPaddleCenter){
+        computerY -= 5;
+    }
+
+    // keep paddle within game bounds
+    computerY = Math.max(0, Math.min(GAME_HEIGHT - PADDLE_HEIGHT, computerY));
+    computerPaddle.style.top = computerY + "px";
+
+
 }
 
 function gameLoop(){
